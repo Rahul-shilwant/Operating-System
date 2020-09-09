@@ -1,0 +1,261 @@
+  1.. Explore the following commands with various options, refer man pages for 
+    further help a) date b) cal c) bc d) echo e) who f) whoami g) logname g) uname h)
+    seq i) clear
+	
+	a)date 
+	  1. date +%a  ---> Mon
+	  2.date +%A ----->Monday
+	  3. date +%b-->Sep
+	  4.date +%B-->September
+	  5.date +%d-->07
+	  6.date +%D -->09/07/20
+	  7.date +%F-->2020-09-07
+	  8.date +%y-->20
+	  9.date +%Y-->2020
+	  10.date +%T-->22:07:56
+	  11.date +%d/%B/%Y-->07/September/2020
+	  12.date +%d-%B-%Y-->07-September-2020
+	  13.date +%B%d%Y-->September072020
+	  14.date +%d%B%Y-->07September2020
+	  15.date +%B%d%Y-->September072020
+                   
+ 
+    b)cal --calculater
+	
+	      1.cal  --> Shows current month calendar on the terminal
+	 
+	      2.cal -m jan --> current month given in command
+   
+          3.cal 2022  -->whole year calender
+		  
+		  4.cal -3 --> Shows calendar of previous, current and next month
+		  
+		  5.cal 08 2020 --> Shows calendar of selected month and year
+		  
+	c) bc 
+	
+	  The bc command supports the following features:
+
+      1.Arithmetic operators
+	   
+	     echo "12+5" | bc 
+	  
+     2.Increment or Decrement operators
+	 
+	      echo "var=10;++var" | bc
+	 
+	    
+	 
+     3.Assignment operators
+	 
+	   echo "var=10;var" | bc
+	 
+    4.Comparison or Relational operators
+	
+	    echo "10>5" |bc  -->true returns 1
+		echo "1==2" | bc -->false return 0
+	
+    5.Logical or Boolean operators
+	 
+	  Logical operators are mostly used in conditional statements. 
+	  
+	  The result of the logical operators is either 1(TRUE) or 0(FALSE).
+	  
+	   expr1 && expr2 : Result is 1 if both expressions are non-zero.
+	   
+	     echo "10 && 5 " | bc
+	   
+      expr1 || expr2 : Result is 1 if either expression is non-zero.
+	  
+	     echo "0||0" | bc
+	  
+      !expr : Result is 1 if expr is 0.
+	  
+	    echo "! 0" | bc
+	
+    6.Conditional statements
+	 
+	  echo 'n=8 ; m=10; if(n>m) print "n is greater" else print "m is greater" ' | bc
+	
+	
+    7.Iterative statements
+	
+	   echo "for(i=1; i<=10; i++) {i;}" | bc
+ 
+ 
+ d)echo
+ 
+    echo "hello world"
+	
+	 to display the string 
+	 
+	echo "12+5" | bc 
+ 
+ 
+
+ e) The who command displays the following information for each user currently logged in to the system if no option is provided
+
+    Login name of the users
+    Terminal line numbers
+    Login time of the users in to system
+    Remote host name of the user
+
+  -To display host name and user associated with standard input such as keyboard
+     who -m -H
+	 
+  -To show list of users logged in to system
+     who -u
+	 
+  -To show time of the system when it booted last time
+     who -b -H
+	 
+  - To show system login process details
+     who -l -H
+	 
+  - To show system login process details
+     who -q -H
+	 
+
+
+  f) whoami
+   
+    It displays the username of the current user when this command is invoked.
+	
+
+  g)logname
+     
+	 Print the name of the current user.
+	 
+  h)uname 
+  
+  The command uname displays the information about the system.
+ 
+   uname -n -->host name
+   
+   uname -s -->kernal name
+   
+   uname -r -->kernal realase date 
+   
+   uname -v --> version of kernal
+   
+ i)seq
+ 
+   seq command in Linux is used to generate numbers from FIRST to LAST in steps of INCREMENT
+   
+   seq 10 --> 1 to 10 
+   
+   seq 3 9 --> 3 to 9
+   
+   seq last
+   
+ j)clear 
+ 
+    used to clear the terminal screen.
+
+
+
+
+Q2.	A) Create three directory a b and c and create a.txt,b.txt and c.txt
+		in each directory respectively and then copy c directory into the a.
+		
+      mkdir a b c
+	  
+	   cd a
+	   
+	    touch a.txt
+		
+	  cd ..
+	  
+	  cd b
+	   
+	   touch b.txt
+	   
+	   cd ..
+	   
+	   cd c
+	   
+	   touch c.txt
+	   
+	   cd ..
+	   
+	   cp -r c a  -->copy c to a
+	   
+	   
+		
+	B)Move Directory b to c.
+	
+	 mv b c
+	
+		
+	C)Create alias of ls -lh command to your name.
+	
+	  alias ls  = 'Rahul '
+	
+	
+	
+	D)Change Directory name a to cdac.
+	
+	   mv a cdac
+
+
+  Q3. A) Create five files file1.txt , file2.txt ,file3.txt file4.txt and
+    file5.txt with some text inside it. Search for 's' character
+    inside all the files using grep command.
+	
+	  cat > file1.txt 
+	  cat > file2.txt
+	  cat > file3.txt
+	  cat > file4.txt
+	  cat > file5.txt
+	  
+	  grep 's' file1.txt file2.txt file3.txt file4.txt file5.txt
+	 	
+    Also Use cat to view all file content together.
+	
+	 cat file1.txt file2.txt file3.txt file4.txt file5.txt
+	
+	B)Create file.txt using cat and edit that using nano editor.
+	   
+	   nano file.txt
+	 
+	c)Create 5 empty files using touch command
+	
+	  touch f1.txt f2.txt f3.txt f4.txt f5.txt
+	
+	
+	D)Remove previously created directory a , b and c.
+
+       rm -rf a b c 
+  
+  
+ Q4)Create a file with some content using vi editor
+ 
+           vi juhu.txt
+    
+	a) Display the file using cat command
+	
+	     cat juhu.txt
+	 
+	b) Display line numbers along with content
+	
+	    cat -n juhu.txt	        
+	
+	c) Display the file in reverse order using tac
+	
+	  tac juhu.txt
+	 
+	d) Combine multiple files using cat command
+	
+	     cat juhu.txt >> kharghar.txt
+		 
+		 cat kharghar.txt
+
+
+ Q5. Create Random some files and sub directories.
+	a) display files row wise, column wise, 1 per row
+	b) sort the files in ascending, descending order
+	c) Create some hidden files and sub directories and display them using “ls -a”
+	d) Change time stamp of some files and directories using touch command and display the files using ls -t ls -rt
+	e) Recursive display contents of your home directory.
+	f) display all attributes of files and directories using ls -l
+	g) display attributes of a directory using ls -ld
