@@ -40,14 +40,14 @@ f) Reversing a string
 		read option
 		case $option in
         1) echo ${#str1}
-                ;;
+          
 
         2) str2=$str1
         echo $str2
-          ;;
+          
         3)str2="Rahul"
                 echo $str1$str2
-                ;;
+            
         4) str2="Rohan"
         if [ $str1 == $str2 ]
         then
@@ -55,9 +55,9 @@ f) Reversing a string
         else
             echo "Not equal"
         fi
-            ;;
+            
         5) echo $str1 | rev
-                ;;
+            
   
 
 ----------------------------------------------------------------------------------------------
@@ -160,6 +160,11 @@ ls -l | awk '{ print $1 }'
 		echo 'Invalid Entry'
 	fi
 
+
+	b) Switch case:
+
+	->
+
 -------------------------------------------------------------------------------------------
 3. a) Write a script to find biggest of three no.s
    b) To find avg of 3 no.s, read no.s from keyboard
@@ -182,6 +187,10 @@ ls -l | awk '{ print $1 }'
 	else
 		echo $num3
 	fi
+
+
+	b)
+	->
 
 --------------------------------------------------------------------------------------------
 4. Write a program to check wahether given no.is even or odd
