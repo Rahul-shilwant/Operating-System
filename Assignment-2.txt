@@ -28,6 +28,37 @@ d) Concatenation of strings
 e) Compare two strings
 f) Reversing a string
 
+> #!/bin/bash
+   
+   do
+        echo '1.Find length'
+        echo '2.Copying string'
+        echo '3.Concate of string'
+        echo '4.compare to sring'
+        echo '5.Reverse string'
+		read str1
+		read option
+		case $option in
+        1) echo ${#str1}
+                ;;
+
+        2) str2=$str1
+        echo $str2
+          ;;
+        3)str2="Rahul"
+                echo $str1$str2
+                ;;
+        4) str2="Rohan"
+        if [ $str1 == $str2 ]
+        then
+          echo "Equal"
+        else
+            echo "Not equal"
+        fi
+            ;;
+        5) echo $str1 | rev
+                ;;
+  
 
 ----------------------------------------------------------------------------------------------
 
