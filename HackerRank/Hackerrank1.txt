@@ -1,0 +1,270 @@
+Write a bash script which does just one thing: saying "HELLO".
+
+Input Format
+
+There is no input file required for this problem.
+
+Output Format
+
+HELLO
+
+ANS:echo "HELLO"
+
+-------------------------------------------------------
+
+Your task is to use for loops to display only odd natural numbers from  to .
+
+Input Format
+
+There is no input.
+
+Constraints
+
+-
+
+Output Format
+
+1
+3
+5
+.
+.
+.
+.
+.
+99  
+
+ANS:
+
+for((i=1; i<=99; i=i+2))
+{
+    echo $i
+}
+--------------------------------------------------------
+
+Write a Bash script which accepts  as input and displays a greeting: "Welcome (name)"
+
+Input Format
+
+One line, containing a .
+
+Output Format
+
+One line: "Welcome (name)" (quotation marks excluded).
+The evaluation will be case-sensitive.
+
+ANS:read name
+echo "Welcome $name"
+
+--------------------------------------------------------------
+
+Use a for loop to display the natural numbers from  to .
+
+Input Format
+
+There is no input
+
+Output Format
+
+1
+2
+3
+4
+5
+.
+.
+.
+.
+.
+50
+
+ANS:
+for((i=1;i<=50;i++))
+{
+    echo $i
+}
+------------------------------------------------------------------
+The World of Numbers
+Given two integers,  and , find their sum, difference, product, and quotient.
+
+Input Format
+
+Two lines containing one integer each ( and , respectively).
+
+Constraints
+
+
+Output Format
+
+Four lines containing the sum (), difference (), product (), and quotient (), respectively.
+(While computing the quotient, print only the integer part.)
+
+Sample Input
+
+ANS:
+read X
+read Y
+
+echo $((X+Y))
+echo $((X-Y))
+echo $((X*Y))
+echo $((X/Y))
+---------------------------------------------------------------
+
+Comparing Numbers
+Given two integers,  and , identify whether  or  or .
+
+Exactly one of the following lines:
+- X is less than Y
+- X is greater than Y
+- X is equal to Y
+
+Input Format
+ANS:
+read x
+read y
+if [ $x -lt $y ]
+then
+echo "X is less than Y";
+elif [ $x -gt $y ]
+then
+echo "X is greater than Y";
+else
+echo "X is equal to Y";
+fi
+------------------------------------------------
+Getting started with conditionals
+Read in one character from STDIN.
+If the character is 'Y' or 'y' display "YES".
+If the character is 'N' or 'n' display "NO".
+No other character will be provided as input.
+
+Input Format
+
+One character
+
+Constraints
+
+The character will be from the set .
+
+Output Format
+
+echo YES or NO to STDOUT.
+ANS:
+read ch
+if [ $ch == 'Y' -o $ch == 'y' ]
+then
+ echo "YES"
+elif [ $ch == 'N' -o $ch == 'n' ]
+then
+ echo "NO"
+fi
+-----------------------------------------------------
+More on Conditionals
+Given three integers (, , and ) representing the three sides of a triangle, identify whether the triangle is scalene, isosceles, or equilateral.
+
+If all three sides are equal, output EQUILATERAL.
+Otherwise, if any two sides are equal, output ISOSCELES.
+Otherwise, output SCALENE.
+Input Format
+
+Three integers, each on a new line.
+
+Constraints
+
+
+The sum of any two sides will be greater than the third.
+ANS:
+read x
+read y
+read z
+if [ $x -eq $y ] && [ $y -eq $z ]
+then
+echo "EQUILATERAL"
+elif [ $x -ne $y ] && [ $x -ne $z ] && [ $y -ne $z ]
+then
+echo "SCALENE"
+else
+echo "ISOSCELES"
+fi
+--------------------------------------------
+Arithmetic Operations
+A mathematical expression containing +,-,*,^, / and parenthesis will be provided. Read in the expression, then evaluate it. Display the result rounded to 3 decimal places.
+
+Constraints
+
+All numeric values are <= 999.
+
+Sample Input
+
+Sample Input 1
+
+ANS:
+read num
+printf "%.3f" $(echo "scope=3;$num"|bc -l)
+-----------------------------------------------------------------------
+
+Compute the Average
+Given n integers, compute their average, rounded to three decimal places.
+ANS:
+read n
+printf "%.3f" $(echo "("$(cat)")/$n" | tr ' ' '+' | bc -l)
+
+-------------------------------------------------------------------
+
+
+Functions and Fractals - Recursive Trees - Bash!
+ANS:
+declare -A matrix
+num_rows=63
+num_columns=100
+
+declare -a roots
+roots[0]=50
+
+for ((i=1;i<=num_rows;i++)) do
+    for ((j=1;j<=num_columns;j++)) do
+        matrix[$i,$j]='_'
+    done
+done
+
+read n
+j=63
+len=16
+for ((i=1; i<=n; i++)) do
+    lim=$((${#roots[@]}-1))
+    elems=${#roots[@]}
+    old_j=$j
+    for((k=0; k<=lim; k++)) do
+        pos=${roots[$k]}
+        #print the trunk
+        for((m=0; m<=len-1; m++)) do
+            matrix[$j,$pos]='1'
+            ((j--))
+        done
+        #print the branches
+        for((m=1; m<=len; m++)) do
+            matrix[$j,$((pos-m))]='1'
+            matrix[$j,$((pos+m))]='1'
+            ((j--))
+        done
+        roots=("${roots[@]}" "$((pos-m+1))" "$((pos+m-1))" )
+        if (( $k < $lim ))
+        then
+            j=$old_j
+        fi
+    done
+    for((k=0; k<$elems; k++)) do
+        unset roots[$k]
+    done
+    roots=( "${roots[@]}" )
+    len=$((len/2))
+done
+
+# print the matrix
+for ((i=1;i<=num_rows;i++)) do
+    for ((j=1;j<=num_columns;j++)) do
+        printf ${matrix[$i,$j]}
+    done
+    printf "\n"
+done
