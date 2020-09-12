@@ -1,0 +1,99 @@
+Q.1) In this challenge, we practice using the head command to display the first  lines of a text file. Display the first 20 lines of an input file.
+ANS:-  head -n 20
+
+
+Q.2) Display the lines (from line number 12 to 22, both inclusive) of a given text file.
+ANS:-   head -n 22 | tail -n 11
+
+Q.3) In this challenge, we practice using the tail command to display the last  characters of a text file.
+ANS:-  tail -c 20
+
+Q.4) In a given fragment of text, replace all sequences of multiple spaces with just one space.
+ANS:-  tr -s ' '
+
+Q.5)  You are given a file of text, where each line contains a number (which may be either an integer or have decimal places). There will be no extra characters other than the number or the newline at the end of each line. Sort the lines in descending order - - such that the first line holds the (numerically) largest number and the last line holds the (numerically) smallest number.
+
+ANS:-  sort -n -r
+
+Q.6) You are given a file of text,which contains temperature information about American cities, in TSV (tab-separated) format. The first column is the name of the city and the next four columns are the average temperature in the months of Jan, Feb, March and April (see the sample input). Rearrange the rows of the table in descending order of the values for the average temperature in January.
+
+ANS:-  sort -n -k2 -r -t $'\t'
+
+Q.7) Given a text file, display only those lines which are not followed or preceded by identical replications.
+ANS:-  uniq -u
+
+Q.8) Given a list of countries, each on a new line, your task is to read them into an array and then display the entire array, with a space between each of the countries' names.
+ANS:-  i=0;
+           while read line
+       do
+            a[i]=$line;
+            i=$((i+1));
+       done
+            echo "${a[3]}";
+
+Q.9) Given a list of countries, each on a new line, your task is to read them into an array. Then slice the array and display only the elements lying between positions 3 and 7, both inclusive. Indexing starts from from 0.
+ANS:- 
+ i=0;j=0;
+while read line
+do 
+    if [ $i -gt 2 ] && [ $i -le 7 ]
+    then
+        a[j]=$line;
+        j=$((j+1));
+    fi
+    i=$((i+1));
+done
+echo "${a[@]}";
+
+Q.10) We now transition to some basic examples of bash scripting for the purpose of text processing and data munging. In this challenge, we practice reading and filtering an array.
+ANS:-  i=1;
+while read line
+do
+    a[i]=$line;
+    i=$((i+1));
+done
+i=1;
+declare -a filtered=( ${a[@]/*[aA]*/} );
+echo "${filtered[@]}";
+
+Q.11)  Given a list of countries, each on a new line, your task is to read them into an array. Then, concatenate the array with itself (twice) - so that you have a total of three repetitions of the original array - and then display the entire concatenated array, with a space between each of the countries' names.
+ANS:-  i=1
+while read line
+do
+    a[i]=$line;
+    i=$((i+1));
+done
+a=( "${a[@]}" "${a[@]}" "${a[@]}");
+echo "${a[@]}";
+
+
+Q.12)
+Count the number of elements in an Array
+Given a list of countries, each on a new line, your task is to read them into an array and then display the count of elements in that array.
+
+i=1;
+while read line
+do
+    a[i]=$line;
+    i=$((i+1));
+done
+echo "${#a[@]}";
+
+
+q14)
+Remove the First Capital Letter from Each Element
+
+
+i=1;
+while read line
+do
+    a[i]=$line;
+    i=$((i+1));
+done
+declare -a filtered=( ${a[@]/[A-Z]/.} );
+echo "${filtered[@]}";
+
+Q15)
+
+
+grep -w "the"
